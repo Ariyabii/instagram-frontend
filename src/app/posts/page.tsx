@@ -1,27 +1,11 @@
 "use client";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
-
-import {
-  Carousel,
-  CarouselContent,
-  // CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-
-import { Bookmark } from "lucide-react";
-import { Heart } from "lucide-react";
-import { MessageCircle } from "lucide-react";
-import { Send } from "lucide-react";
 import { useRouter } from "next/navigation";
-
 import { jwtDecode } from "jwt-decode";
 import { useState, useEffect } from "react";
+import { PostActions } from "@/custom_component/postActions";
+import { PostHeader } from "@/custom_component/PostHeader";
+import { PostLikesDialog } from "@/custom_component/PostLikesDialog";
+import { Card } from "@/components/ui/card";
 
 type likeTypes = {
   postlikeImage: string;
@@ -58,7 +42,7 @@ const Page = () => {
     const decodedToken = jwtDecode(token);
     console.log(decodedToken);
     if (!token) {
-      router.push("/signUp");
+      router.push("/signup");
       return;
     }
 
@@ -72,50 +56,30 @@ const Page = () => {
 
   return (
     <div className="all">
+      <div className="ig">
+        <img
+          src="https://www.pngkey.com/png/full/1-13459_instagram-font-logo-white-png-instagram-white-text.png"
+          width="100px"
+          height="100px"
+        />
+      </div>
       {posts?.map((post) => {
         return (
           <Card key={post._id} className="w-fit">
-            {" "}
-            <CardHeader>
-              <div className="flex space-x-2">
+            <PostHeader username={post.userId.username}></PostHeader>
+            <div className="p-6 pt-0">
+              <PostActions postId={post._id}></PostActions>
+              <div className="flex">
                 <div>{post.userId.username}</div>
+                <div>{post.caption}</div>
               </div>
-            </CardHeader>
-            <Carousel>
-              <CarouselContent>
-                {" "}
-                <img src={post.postImage} width="376px" height="600px" />
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
-            <CardContent>
-              <div className="">{post.caption}</div>
-            </CardContent>
-            <CardFooter className="flex justify-between">
-              <div className="flex space-y-0">
-                <Heart />
-                <MessageCircle />
-                <Send />
-              </div>
-              <Bookmark />
-            </CardFooter>
-            <div className="liked">
-              <div> 0 likes</div>
-              <div>{post.userId.username} ...</div>
-              <button
-                className="view"
-                onClick={() => handleClickComments(post._id)}
-              >
-                View all comments
-              </button>
+              <PostLikesDialog></PostLikesDialog>
             </div>
           </Card>
         );
       })}
-      <div></div>
+      ;
     </div>
   );
 };
-
 export default Page;

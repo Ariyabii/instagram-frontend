@@ -14,9 +14,9 @@ import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import { useEffect } from "react";
 export default function Page() {
-  const [firstInput, setFirstInput] = useState<string>("");
-  const [secondInput, setSecondInput] = useState<string>("");
-  const [thirdInput, setThirdInput] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [userName, setUserName] = useState<string>("");
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState<boolean>(false);
   const [password, setPassword] = useState<string>("");
@@ -24,16 +24,16 @@ export default function Page() {
   const router = useRouter();
 
   useEffect(() => {});
-  const name1 = (e: { target: { value: string } }) => {
-    setFirstInput(String(e.target.value));
+  const firstNameValue = (e: { target: { value: string } }) => {
+    setFirstName(String(e.target.value));
   };
-  const name2 = (e: { target: { value: string } }) => {
-    setSecondInput(String(e.target.value));
+  const lastNameValue = (e: { target: { value: string } }) => {
+    setLastName(String(e.target.value));
   };
-  const name3 = (e: { target: { value: string } }) => {
-    setThirdInput(String(e.target.value));
+  const userNameValue = (e: { target: { value: string } }) => {
+    setUserName(String(e.target.value));
   };
-  const email1 = (e: ChangeEvent<HTMLInputElement>) => {
+  const emailValue = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
     handleError();
   };
@@ -53,10 +53,10 @@ export default function Page() {
     router.push("/posts");
 
     const input = {
-      username: thirdInput,
+      username: userName,
       password: password,
       email: email,
-      profileImage: "url",
+      profileImage: "",
     };
 
     const jsonData = await fetch("https://ig-server-v2.onrender.com/signup", {
@@ -96,13 +96,25 @@ export default function Page() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          <Input value={firstInput} onChange={name1} placeholder="FirstName" />
-          <Input value={secondInput} onChange={name2} placeholder="LastName" />
-          <Input value={thirdInput} onChange={name3} placeholder="Username" />
+          <Input
+            value={firstName}
+            onChange={firstNameValue}
+            placeholder="FirstName"
+          />
+          <Input
+            value={lastName}
+            onChange={lastNameValue}
+            placeholder="LastName"
+          />
+          <Input
+            value={userName}
+            onChange={userNameValue}
+            placeholder="Username"
+          />
           <Input
             type="email"
             value={email}
-            onChange={email1}
+            onChange={emailValue}
             placeholder="Email"
           />
           {emailError && (
