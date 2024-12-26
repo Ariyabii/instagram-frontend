@@ -14,6 +14,18 @@ body {
   justify-content: center;
   margin-top: 10vh;
 }
+
+.all {
+  width: 100vw;
+  height: 5vh;
+  border: 3px solid rgb(139, 139, 159);
+  border-bottom: 0px solid black;
+  border-right: 0px solid black;
+  border-left: 0px solid black;
+  border-radius: 1vh;
+  margin-top: 20px;
+}
+/*  
 .all {
   display: flex;
   flex-direction: column;
@@ -76,4 +88,4 @@ body {
 .view {
   display: flex;
   flex-direction: column;
-}
+} */
