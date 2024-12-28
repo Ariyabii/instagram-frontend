@@ -34,8 +34,6 @@ export const PostActions = ({
 
   const router = useRouter();
 
-  console.log(decodedToken);
-
   const handleLike = async () => {
     if (isUserLiked) {
       const response = await fetch(
@@ -73,9 +71,9 @@ export const PostActions = ({
       <div className="font-Bold text-lg" onClick={handleDialog}>
         {username} likes
       </div>
-      <div onClick={() => router.push(`/comment/${postId}`)}>
+      {/* <div onClick={() => router.push(`/comment/${postId}`)}>
         View all comments
-      </div>
+      </div> */}
       <PostLikesDialog
         username={postId}
         isLikesDialogOpen={isLikesDialogOpen}

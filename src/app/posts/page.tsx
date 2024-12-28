@@ -8,6 +8,7 @@ import { PostHeader } from "@/custom_component/PostHeader";
 import { PostLikesDialog } from "@/custom_component/PostLikesDialog";
 import { Card } from "@/components/ui/card";
 import { House } from "lucide-react";
+// import Image from "next/image";
 
 type likeTypes = {
   postlikeImage: string;
@@ -44,22 +45,22 @@ const Page = () => {
     const token = localStorage.getItem("accessToken") ?? "";
     console.log(token);
     const decodedToken = jwtDecode(token);
-    console.log(decodedToken);
     if (!token) {
       router.push("/signup");
       return;
     }
 
     getPosts();
-  }, []);
+    console.log(decodedToken);
+  }, [router]);
   if (loading) return "loading";
 
   return (
     <div>
       {posts?.map((post) => {
         return (
-          <Card key={post._id} className="w-fit">
-            <PostHeader />
+          <Card key={post._id}>
+            <PostHeader profileImage={""} postId={""} />
             <div className="p-6 pt-0">
               <PostActions postId={post._id} likes={post?.likes} />
               <div className="flex">
@@ -72,11 +73,13 @@ const Page = () => {
                 handleDialog={function (): void {}}
               />
             </div>
+            <div onClick={() => router.push(`/comment/${post._id}`)}>
+              View all comments
+            </div>
           </Card>
         );
       })}
       <div className="all">
-        {" "}
         <House />
       </div>
     </div>

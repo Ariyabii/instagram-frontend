@@ -1,24 +1,25 @@
 import { Avatar } from "@radix-ui/react-avatar";
 import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-export const PostHeader = ({
+export const CommentHeader = ({
   profileImage,
-  postId,
+  userId,
 }: {
   profileImage: string;
-  postId: string;
+  userId: string;
 }) => {
   return (
     <div className="flex items-center gap-2 p-6 pt-8">
       <div>
         <Avatar>
           <AvatarImage
+            className="profileImg"
             src={
-              "https://www.pngkey.com/png/full/1-13459_instagram-font-logo-white-png-instagram-white-text.png"
+              "https://images.unsplash.com/photo-1734366965582-1f5bc9d4e21a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNnx8fGVufDB8fHx8fA%3D%3D"
             }
           ></AvatarImage>
           <AvatarFallback>
-            {profileImage},{postId}
+            {profileImage},{userId}
           </AvatarFallback>
         </Avatar>
       </div>
@@ -26,4 +27,4 @@ export const PostHeader = ({
   );
 };
 
-export default PostHeader;
+export default CommentHeader;
