@@ -29,7 +29,7 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
 
   const getComments = async () => {
     const data = await fetch(
-      `https://ig-server-v2.onrender.com/getCommentsByPostId/${id}`
+      `https://ig-service-mi3q.onrender.com/getCommentsByPostId/${id}`
     );
     const comments = await data.json();
     setComments(comments);

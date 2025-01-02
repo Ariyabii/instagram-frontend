@@ -6,9 +6,9 @@ import { useState, useEffect } from "react";
 import { PostActions } from "@/custom_component/PostActions";
 import { PostHeader } from "@/custom_component/PostHeader";
 import { PostLikesDialog } from "@/custom_component/PostLikesDialog";
-import { Card } from "@/components/ui/card";
 import { House } from "lucide-react";
-// import Image from "next/image";
+import { SquarePlus } from "lucide-react";
+import { SquareUser } from "lucide-react";
 
 type likeTypes = {
   postlikeImage: string;
@@ -19,7 +19,7 @@ type likeTypes = {
 type postType = {
   _id: string;
   caption: string;
-  profileimage: string;
+  profileImage: string;
   userId: {
     username: string;
   };
@@ -30,11 +30,10 @@ type postType = {
 const Page = () => {
   const [posts, setPosts] = useState<postType>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  // const { toast } = useToast();
   const router = useRouter();
 
   const getPosts = async () => {
-    const jsonData = await fetch("https://ig-server-v2.onrender.com/posts");
+    const jsonData = await fetch("https://ig-service-mi3q.onrender.com/posts");
     const response = await jsonData.json();
     setPosts(response);
     setLoading(false);
@@ -59,10 +58,23 @@ const Page = () => {
     <div>
       {posts?.map((post) => {
         return (
-          <Card key={post._id}>
-            <PostHeader profileImage={""} postId={""} />
+          <div key={post._id}>
+            <img
+              src="https://t4.ftcdn.net/jpg/03/97/48/01/360_F_397480131_ifXqWNKVteOhczWDJBeODrnMIbVcVp13.jpg"
+              className="iglogo"
+            />
+            <div className="header">
+              <PostHeader
+                profileImage={post.profileImage}
+                post={post?.userId.username}
+              />
+            </div>
             <div className="p-6 pt-0">
-              <PostActions postId={post._id} likes={post?.likes} />
+              <PostActions
+                postId={post._id}
+                likes={post?.likes}
+                postImage={post.postImage}
+              />
               <div className="flex">
                 <div>{post.userId.username}</div>
                 <div>{post.caption}</div>
@@ -76,11 +88,13 @@ const Page = () => {
             <div onClick={() => router.push(`/comment/${post._id}`)}>
               View all comments
             </div>
-          </Card>
+          </div>
         );
       })}
       <div className="all">
         <House />
+        <SquarePlus />
+        <SquareUser />
       </div>
     </div>
   );

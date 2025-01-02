@@ -36,7 +36,7 @@ export const CommentActions = ({
   const handlecomment = async () => {
     if (isUserComment) {
       const response = await fetch(
-        "https://ig-server-v2.onrender.com/post/comment",
+        "https://ig-service-mi3q.onrender.com/post/comment",
         {
           method: "POST",
           headers: {

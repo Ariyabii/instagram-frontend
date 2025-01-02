@@ -16,11 +16,13 @@ type likeTypes = {
 };
 
 export const PostActions = ({
+  postImage,
   postId,
   likes,
 }: {
   postId: string;
   likes: likeTypes[];
+  postImage: string;
 }) => {
   const [isLikesDialogOpen, setIsLikesDialogOpen] = useState(false);
   const handleDialog = () => setIsLikesDialogOpen((prev) => !prev);
@@ -37,7 +39,7 @@ export const PostActions = ({
   const handleLike = async () => {
     if (isUserLiked) {
       const response = await fetch(
-        "https://ig-server-v2.onrender.com/post/like",
+        "https://ig-service-mi3q.onrender.com/post/like",
         {
           method: "POST",
           headers: {
@@ -58,6 +60,7 @@ export const PostActions = ({
     <>
       <div className=" flex justify-between">
         <div className="flex gap-2">
+          <img src={postImage} className="postimg" />
           <Heart
             onClick={handleLike}
             color={isUserLiked ? "red" : "black"}

@@ -46,7 +46,7 @@ export default function Page() {
       profileImage: "",
     };
 
-    const jsonData = await fetch("https://ig-server-v2.onrender.com/login", {
+    const jsonData = await fetch("https://ig-service-mi3q.onrender.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
