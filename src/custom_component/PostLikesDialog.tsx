@@ -15,7 +15,9 @@ export const PostLikesDialog = ({
     <Dialog open={isLikesDialogOpen} onOpenChange={handleDialog}>
       <DialogContent>
         {" "}
-        <DialogTitle>{username}</DialogTitle>
+        <DialogTitle className="font-Bold text-lg text-white">
+          {username}
+        </DialogTitle>
       </DialogContent>
     </Dialog>
   );

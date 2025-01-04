@@ -1,5 +1,5 @@
 import { Avatar } from "@radix-ui/react-avatar";
-import { AvatarImage } from "@/components/ui/avatar";
+import { AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 export const PostContent = ({ postImage }: { postImage: string }) => {
   return (
@@ -7,7 +7,7 @@ export const PostContent = ({ postImage }: { postImage: string }) => {
       <div>
         <Avatar>
           <AvatarImage>{postImage}</AvatarImage>
-          {/* <AvatarFallback>CN</AvatarFallback> */}
+          <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </div>
     </div>

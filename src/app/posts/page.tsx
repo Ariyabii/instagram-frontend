@@ -55,18 +55,18 @@ const Page = () => {
   if (loading) return "loading";
 
   return (
-    <div>
+    <div className="bg-black flex flex-col text-white">
+      <img
+        src="https://t4.ftcdn.net/jpg/03/97/48/01/360_F_397480131_ifXqWNKVteOhczWDJBeODrnMIbVcVp13.jpg"
+        className="w-40 h-15 ms-3"
+      />
       {posts?.map((post) => {
         return (
           <div key={post._id}>
-            <img
-              src="https://t4.ftcdn.net/jpg/03/97/48/01/360_F_397480131_ifXqWNKVteOhczWDJBeODrnMIbVcVp13.jpg"
-              className="iglogo"
-            />
-            <div className="header">
+            <div className="font-bold">
               <PostHeader
                 profileImage={post.profileImage}
-                post={post?.userId.username}
+                username={post.userId.username}
               />
             </div>
             <div className="p-6 pt-0">
@@ -74,24 +74,31 @@ const Page = () => {
                 postId={post._id}
                 likes={post?.likes}
                 postImage={post.postImage}
+                signupId={post._id}
               />
-              <div className="flex">
-                <div>{post.userId.username}</div>
-                <div>{post.caption}</div>
+              <div className="flex gap-3">
+                <div className="font-bold">{post.userId.username}</div>
+                <div className="font-medium">{post.caption}</div>
               </div>
               <PostLikesDialog
                 username={post.userId.username}
                 isLikesDialogOpen={false}
                 handleDialog={function (): void {}}
               />
-            </div>
-            <div onClick={() => router.push(`/comment/${post._id}`)}>
-              View all comments
+              <div
+                className="text-slate-300"
+                onClick={() => router.push(`/comment/${post._id}`)}
+              >
+                View all comments
+              </div>
+              <div onClick={() => router.push(`/profile/${post._id}`)}>
+                View profile
+              </div>
             </div>
           </div>
         );
       })}
-      <div className="all">
+      <div className="flex justify-between">
         <House />
         <SquarePlus />
         <SquareUser />

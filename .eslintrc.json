@@ -1,6 +1,16 @@
 {
   "extends": ["next/core-web-vitals", "next/typescript"],
   "rules": {
+    "jsx-a11y/alt-text": [
+      2,
+      {
+        "elements": ["img", "object", "area", "input[type=\"image\"]"],
+        "img": ["Image"],
+        "object": ["Object"],
+        "area": ["Area"],
+        "input[type=\"image\"]": ["InputImage"]
+      }
+    ],
     "unicorn/filename-case": [
       "error",
       { "cases": { "pascalCase": true }, "ignore": [] }

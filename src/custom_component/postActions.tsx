@@ -18,11 +18,13 @@ type likeTypes = {
 export const PostActions = ({
   postImage,
   postId,
+  signupId,
   likes,
 }: {
   postId: string;
   likes: likeTypes[];
   postImage: string;
+  signupId: string;
 }) => {
   const [isLikesDialogOpen, setIsLikesDialogOpen] = useState(false);
   const handleDialog = () => setIsLikesDialogOpen((prev) => !prev);
@@ -47,6 +49,7 @@ export const PostActions = ({
           },
           body: JSON.stringify({
             postId,
+            signupId,
             userId: username,
           }),
         }
@@ -59,29 +62,28 @@ export const PostActions = ({
   return (
     <>
       <div className=" flex justify-between">
-        <div className="flex gap-2">
-          <img src={postImage} className="postimg" />
-          <Heart
-            onClick={handleLike}
-            color={isUserLiked ? "red" : "black"}
-            fill={isUserLiked ? "red" : "white"}
-          />
-          <MessageCircle onClick={() => router.push(`/comment/${postId}`)} />
-          <Send />
+        <div className="flex gap-2 flex-col ">
+          <img src={postImage} />
+          <div className="flex flex-row">
+            <Heart
+              onClick={handleLike}
+              color={isUserLiked ? "red" : "black"}
+              fill={isUserLiked ? "red" : "white"}
+            />
+            <MessageCircle onClick={() => router.push(`/comment/${postId}`)} />
+            <Send onClick={() => router.push(`/profile/${signupId}`)} />
+            <Bookmark className="flex justify-between" />
+            <PostLikesDialog
+              username={postId}
+              isLikesDialogOpen={isLikesDialogOpen}
+              handleDialog={handleDialog}
+            />
+          </div>
+          <div className="font-Bold text-lg" onClick={handleDialog}>
+            {username} likes
+          </div>
         </div>
-        <Bookmark />
       </div>
-      <div className="font-Bold text-lg" onClick={handleDialog}>
-        {username} likes
-      </div>
-      {/* <div onClick={() => router.push(`/comment/${postId}`)}>
-        View all comments
-      </div> */}
-      <PostLikesDialog
-        username={postId}
-        isLikesDialogOpen={isLikesDialogOpen}
-        handleDialog={handleDialog}
-      />
     </>
   );
 };
