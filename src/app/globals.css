@@ -14,3 +14,8 @@ body {
   margin-top: 2vh;
   flex-direction: column;
 }
+.ll {
+  display: flex;
+  justify-content: end;
+  width: 390px;
+}

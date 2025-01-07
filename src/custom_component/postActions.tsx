@@ -61,10 +61,10 @@ export const PostActions = ({
 
   return (
     <>
-      <div className=" flex justify-between">
-        <div className="flex gap-2 flex-col ">
+      <div className=" flex">
+        <div className="flex gap-4 flex-col">
           <img src={postImage} />
-          <div className="flex flex-row">
+          <div className="flex">
             <Heart
               onClick={handleLike}
               color={isUserLiked ? "red" : "black"}
@@ -72,7 +72,9 @@ export const PostActions = ({
             />
             <MessageCircle onClick={() => router.push(`/comment/${postId}`)} />
             <Send onClick={() => router.push(`/profile/${signupId}`)} />
-            <Bookmark className="flex justify-between" />
+            <div className="ll">
+              <Bookmark />
+            </div>
             <PostLikesDialog
               username={postId}
               isLikesDialogOpen={isLikesDialogOpen}
