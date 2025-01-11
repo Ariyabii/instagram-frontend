@@ -48,10 +48,10 @@ const Page = () => {
         className="file:border file:border-gray-300 file:rounded-md file:px-4 file:py-2 file:bg-blue-50 file:text-blue-700 file:cursor-pointer hover:file:bg-blue-100"
       />{" "}
       <button onClick={uploadImages}>Upload</button>{" "}
+      <Input placeholder="Add a caption"></Input>
       <Button className="text-base" onClick={() => router.push("/posts")}>
         Post
       </Button>
-      <Input placeholder="Add a caption"></Input>
       <div className="mt-4 text-center">
         {" "}
         {uploadedImages.map((img, index) => (

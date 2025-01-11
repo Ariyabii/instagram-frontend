@@ -7,8 +7,8 @@ export const Header = () => {
     <div className="flex h-44 w-60">
       <Avatar>
         <AvatarImage
-        // src="https://t4.ftcdn.net/jpg/03/97/48/01/360_F_397480131_ifXqWNKVteOhczWDJBeODrnMIbVcVp13.jpg"
-        // className="w-10 h-20"
+          src="https://t4.ftcdn.net/jpg/03/97/48/01/360_F_397480131_ifXqWNKVteOhczWDJBeODrnMIbVcVp13.jpg"
+          className="w-10 h-20"
         ></AvatarImage>
       </Avatar>
     </div>

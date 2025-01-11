@@ -53,6 +53,7 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   console.log(comments);
+
   return (
     <div className="bg-black h-100 flex flex-col">
       {comments.map((comment, i) => {

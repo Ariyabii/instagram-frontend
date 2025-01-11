@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
 import { Bookmark } from "lucide-react";
 import { Heart } from "lucide-react";
 import { MessageCircle } from "lucide-react";
@@ -56,8 +58,10 @@ export const PostActions = ({
       );
       const res = await response.json();
       console.log(res);
+      console.log(response);
     }
   };
+  handleLike();
 
   return (
     <>
@@ -66,15 +70,13 @@ export const PostActions = ({
           <img src={postImage} />
           <div className="flex">
             <Heart
-              onClick={handleLike}
-              color={isUserLiked ? "red" : "black"}
-              fill={isUserLiked ? "red" : "white"}
+              onClick={handleDialog}
+              color={isUserLiked ? "black" : ""}
+              fill={isUserLiked ? "white" : "red"}
             />
             <MessageCircle onClick={() => router.push(`/comment/${postId}`)} />
             <Send onClick={() => router.push(`/profile/${signupId}`)} />
-            <div className="ll">
-              <Bookmark />
-            </div>
+            <Bookmark className="bookmark" />
             <PostLikesDialog
               username={postId}
               isLikesDialogOpen={isLikesDialogOpen}
