@@ -58,7 +58,6 @@ const Page = ({ params }: { params: Promise<{ userId: string }> }) => {
           <div key={i}>
             <div className="flex w-100 h-10 justify-between ">
               <Settings className="flex ml-3" />
-              <div className="text-white">{user.userId.username}</div>
             </div>
             <div className="flex ml-10 mt-20 w-50 h-30">
               <ProfileHeader profileImage={user.profileImage} />
