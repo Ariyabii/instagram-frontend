@@ -34,7 +34,9 @@ const Page = () => {
   const router = useRouter();
 
   const getPosts = async () => {
-    const jsonData = await fetch("https://ig-service-mi3q.onrender.com/posts");
+    const jsonData = await fetch(
+      "https://instagram-backend-fby5.onrender.com/posts"
+    );
     const response = await jsonData.json();
     setPosts(response);
     setLoading(false);

@@ -36,7 +36,7 @@ const Page = ({ params }: { params: Promise<{ userId: string }> }) => {
 
   const getProfile = async () => {
     const jsonData = await fetch(
-      `https://ig-service-mi3q.onrender.com/getProfileId/${userId}`
+      `https://instagram-backend-fby5.onrender.com/getProfileId/${userId}`
     );
     const profile = await jsonData.json();
     setUsers(profile);
@@ -52,10 +52,11 @@ const Page = ({ params }: { params: Promise<{ userId: string }> }) => {
   }, []);
   if (loading) return "loading";
   return (
-    <div className="bg-black flex flex-col text-white">
+    <div className=" bg-white flex flex-col text-white">
       {users.map((user, i) => {
         return (
           <div key={i}>
+            {user._id}
             <div className="flex w-100 h-10 justify-between ">
               <Settings className="flex ml-3" />
             </div>

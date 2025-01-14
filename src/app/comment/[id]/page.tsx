@@ -36,7 +36,7 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
 
   const getComments = async () => {
     const data = await fetch(
-      `https://ig-service-mi3q.onrender.com/getCommentsByPostId/${id}`
+      `https://instagram-backend-fby5.onrender.com/getCommentsByPostId/${id}`
     );
     const comments = await data.json();
     setComments(comments);
@@ -53,6 +53,7 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   console.log(comments);
+  const postedComment = () => {};
 
   return (
     <div className="bg-black h-100 flex flex-col">
@@ -79,7 +80,9 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Button variant="outline">Post</Button>
+                    <Button variant="outline" onClick={postedComment}>
+                      Post
+                    </Button>
                   </TooltipTrigger>
                 </Tooltip>
               </TooltipProvider>

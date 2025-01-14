@@ -58,13 +58,16 @@ export default function Page() {
       profileImage: "",
     };
 
-    const jsonData = await fetch("https://ig-server-v2.onrender.com/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(input),
-    });
+    const jsonData = await fetch(
+      "https://instagram-backend-fby5.onrender.com/signup",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(input),
+      }
+    );
 
     const data = await jsonData.json();
     const token = data.token;

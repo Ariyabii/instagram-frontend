@@ -27,7 +27,9 @@ export const Footer = () => {
   const accountId = decodedToken.userId;
 
   const getProfile = async () => {
-    const jsonData = await fetch("https://ig-service-mi3q.onrender.com/posts");
+    const jsonData = await fetch(
+      "https://instagram-backend-fby5.onrender.com/posts"
+    );
     const response = await jsonData.json();
     setProfile(response);
     setLoading(false);

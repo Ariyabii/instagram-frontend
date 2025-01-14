@@ -28,6 +28,12 @@ body {
 .bookmark {
   margin-left: 50vw;
 }
+.zurg {
+  display: flex;
+  width: 100px;
+  height: 9.5vh;
+  margin-left: 30px;
+}
 .aa {
   display: flex;
   position: fixed;
